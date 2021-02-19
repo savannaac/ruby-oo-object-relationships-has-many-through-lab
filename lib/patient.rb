@@ -7,12 +7,12 @@ class Patient
         @@all << self
     end
 
-    def new_appointment(doctor, date)
-        Appointment.new(self, date, doctor)
+    def self.all
+        @@all
     end
 
-    def self.all    
-        @@all
+    def new_appointment(date, doctor)
+        Appointment.new(date, self, doctor)
     end
 
     def appointments
@@ -20,6 +20,6 @@ class Patient
     end
 
     def doctors
-        self.appointments.map {|appointment| appointment.doctor}
+        appointments.map {|appointment| appointment.doctor}
    end
  end 
